@@ -1,5 +1,5 @@
 
-const  archivos=require('fs/promises');
+const  archivos=require('fs');
 import { lmdb } from "./lmdb";
 import { movie } from "./movie";
 import { profesional } from "./profesional";
@@ -19,7 +19,23 @@ pelicula2.actors=[c,d];
 let array=[pelicula1,pelicula2];
 let datos=new lmdb(array);
 let imprimir=JSON.stringify(datos);
-archivos.writeFile("lmdbb.json",imprimir);
+archivos.writeFileSync("lmdbb.json",imprimir);
+let cont=archivos.readFileSync("lmdbb.json","utf-8");
+let nuevo=new lmdb([]);
+nuevo.peliculas=(JSON.parse(cont).peliculas);
+console.log(nuevo);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
